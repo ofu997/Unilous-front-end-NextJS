@@ -1,11 +1,11 @@
+import { useMutation } from '@apollo/react-hooks'
 import React from 'react'
 import { connect } from 'react-redux'
-import { useMutation } from '@apollo/react-hooks'
+import { resetAlert, setAlert } from '../../../redux/reducers/alertNotif'
+import { triggerAlert, useField } from '../../../src/functions/functions'
 import { CREATE_USER } from '../../../src/schemas/mutations'
-import InputHeader from '../../text-field/InputHeader'
-import { useField, triggerAlert } from '../../../src/functions/functions'
-import { setAlert, resetAlert } from '../../../redux/reducers/alertNotif'
 import UR from '../../../styles/user/user.module.css'
+import InputHeader from '../../text-field/InputHeader'
 
 const Register = (props) => {
     const username = useField('text')
@@ -76,12 +76,12 @@ const Register = (props) => {
                     </ul>
                 </InputHeader>
                 <input className={UR.UFInput} {...email.fields} id="SI-email" /> */}
-                <InputHeader inputFor="SI-referenceLink" info={true} title="portafolio link" color="dark" >
+                <InputHeader inputFor="SI-referenceLink" info={true} title="portfolio link" color="dark" >
                     <p style={{margin: 0, marginBottom: '5px'}}>link on your user page used as a resume to demonstrate your ability</p>
-                    <p style={{margin: 0, marginBottom: '5px'}}><strong>always view another users portafolio link before working with them</strong></p>
+                    <p style={{margin: 0, marginBottom: '5px'}}><strong>always view another user's portfolio link before working with them</strong></p>
                     <ul style={{margin: 0}}>
                         <li>sites recommended: <strong>LinkedIn</strong>, <strong>Indeed</strong>, <strong>GitHub</strong>, or <strong>Facebook</strong></li>
-                        <li>to further ensure your portafolio link is trustworthy, link your Unilous accout from your portafolio link</li>
+                        <li>to further ensure your portfolio link is trustworthy, link your Unilous account from your portfolio link</li>
                     </ul>
                 </InputHeader>
                 <input className={UR.UFInput} {...referenceLink.fields} id="SI-referenceLink" />

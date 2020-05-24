@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import resStyle from '../../styles/pages/results.module.css'
-import Post from '../../components/post/Post'
 import { useQuery } from '@apollo/react-hooks'
-import { SEARCH_POSTS } from '../../src/schemas/queries'
-import { addPosts } from '../../redux/reducers/posts'
-import Link from 'next/link'
-import Loading from '../../components/Loading'
-import { palletteGenerator } from '../../src/functions/functions'
-import { toggleStretchLayout } from '../../redux/reducers/stretchLayout'
-import { setEventSearch } from '../../redux/reducers/eventSearch'
-import {bindActionCreators} from 'redux'
-import {withRouter} from 'next/router'
-import Layout from '../../components/Layout'
 import Head from 'next/head'
+import Link from 'next/link'
+import { withRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import Layout from '../../components/Layout'
+import Loading from '../../components/Loading'
+import Post from '../../components/post/Post'
+import { setEventSearch } from '../../redux/reducers/eventSearch'
+import { addPosts } from '../../redux/reducers/posts'
+import { toggleStretchLayout } from '../../redux/reducers/stretchLayout'
+import { palletteGenerator } from '../../src/functions/functions'
+import { SEARCH_POSTS } from '../../src/schemas/queries'
+import resStyle from '../../styles/pages/results.module.css'
 
 const Results = withRouter((props) => {
     if (typeof window === 'undefined') return <h1 className={resStyle.test}>rendering</h1>
@@ -139,6 +139,7 @@ const Results = withRouter((props) => {
         const eventsContainerClass = props.eventSearch ? resStyle.ECActive : null
         const showLoading = moreResults() ? <Loading /> : <h3 style={{opacity: '0.8'}}>no more posts</h3>
         const titlesString = postsArray.map(p => p.title).join(', ')
+        console.log('props.posts'+props.posts);
         return (
             <Layout>
                 <Head>

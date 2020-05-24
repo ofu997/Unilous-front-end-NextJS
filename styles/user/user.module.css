@@ -201,6 +201,11 @@
     width: 100%;
     background-color: #484848;
 }
+
+.userFormContainer input {
+    /* line-height: 30px; */
+    line-height: 2em;
+}
 .userForm {
     width: 90%;
     margin: auto;

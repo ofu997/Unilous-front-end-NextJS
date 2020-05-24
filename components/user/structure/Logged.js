@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
 import { useQuery } from '@apollo/react-hooks'
-import { FIND_USER } from '../../../src/schemas/queries'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { setCurrentUser } from '../../../redux/reducers/currentUser'
 import { clearToken } from '../../../redux/reducers/token'
+import { FIND_USER } from '../../../src/schemas/queries'
+import UR from '../../../styles/user/user.module.css'
 import UserNotifList from '../utilities/UserNotifList'
 import UserSP from '../utilities/UserSP'
-import UU from '../../../styles/user/userUtilities.module.css'
-import UR from '../../../styles/user/user.module.css'
-import {bindActionCreators} from 'redux'
-import Link from 'next/link'
 
 const Logged = (props) => {
     const [showUtilities, setShowUtilities] = useState(true)
@@ -75,7 +74,7 @@ const Logged = (props) => {
         }
     }
     const usernameIcon = props.currentUser.username.substr(0, 1).toUpperCase()
-
+    
     const iconToShow = showUtilities ?
         <Link href="/user/[username" as={`/user/${encodeURIComponent(props.currentUser.username)}`}>
             <a className={`${UR.userIconContainer} ${UR.UICH} neutralize-link`}>
@@ -175,6 +174,7 @@ const mapDispatchToProps = (dispatch) => {
         setCurrentUser: bindActionCreators(setCurrentUser, dispatch),
     }
 }
+
 
 export default connect(
     mapStateToProps,

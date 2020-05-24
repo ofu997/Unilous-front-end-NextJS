@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import { useMutation } from '@apollo/react-hooks'
+import Head from 'next/head'
+import { withRouter } from 'next/router'
+import React from 'react'
 import { connect } from 'react-redux'
-import { useQuery, useMutation } from '@apollo/react-hooks'
-import { MAKE_NOTIFICATION } from '../../src/schemas/mutations'
-import { FIND_USER, ALL_USERS, FIND_POST } from '../../src/schemas/queries'
-import { setAlert, resetAlert } from '../../redux/reducers/alertNotif'
-import UP from '../../styles/pages/userPage.module.css';
+import { bindActionCreators } from 'redux'
+import Layout from '../../components/Layout'
 import PostSmallList from '../../components/post/PostSmallList'
-import Loading from '../../components/Loading'
 import FormContainer from '../../components/text-field/FormContainer'
 import ReferenceLink from '../../components/text-field/ReferenceLink'
-import { palletteGenerator, useField, triggerAlert } from '../../src/functions/functions'
-import {bindActionCreators} from 'redux'
-import {apolloClient} from '../../lib/apollo'
-import {withRouter} from 'next/router'
-import Link from 'next/link'
-import Layout from '../../components/Layout'
-import Head from 'next/head'
+import { apolloClient } from '../../lib/apollo'
+import { resetAlert, setAlert } from '../../redux/reducers/alertNotif'
+import { palletteGenerator, triggerAlert, useField } from '../../src/functions/functions'
+import { MAKE_NOTIFICATION } from '../../src/schemas/mutations'
+import { ALL_USERS, FIND_USER } from '../../src/schemas/queries'
+import UP from '../../styles/pages/userPage.module.css'
+
 
 const UserPage = withRouter((props) => {
   const currentUser = props.user
@@ -49,8 +48,8 @@ const UserPage = withRouter((props) => {
   const pallette = palletteGenerator("rgb(40,40,40)").colorPallette
   // console.log('props.currentUser', props.currentUser); 
   // console.log(typeof props.currentUser)
-  // console.log('props.currentUser.username: ' + props.currentUser.username)
   // console.log('page username: ' + currentUser.username)
+
   return (
     <Layout>
       <Head>

@@ -1,17 +1,17 @@
+import Link from 'next/link'
+import Router from 'next/router'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import UserContainer from './UserContainer'
+import { bindActionCreators } from 'redux'
+import { resetAlert } from '../../redux/reducers/alertNotif'
+import { clearToken } from '../../redux/reducers/token'
 import NB from '../../styles/navBar.module.css'
-import Link from 'next/link'
 import SkillSugg from '../text-field/SkillSugg'
+import Register from '../user/form/Register'
+import SignIn from '../user/form/SignIn'
 import UserNotifList from '../user/utilities/UserNotifList'
 import UserSP from '../user/utilities/UserSP'
-import SignIn from '../user/form/SignIn'
-import Register from '../user/form/Register'
-import { clearToken } from '../../redux/reducers/token'
-import { resetAlert } from '../../redux/reducers/alertNotif'
-import {bindActionCreators} from 'redux'
-import Router from 'next/router'
+import UserContainer from './UserContainer'
 
 const NavBar = (props) => {
     const [utilityShown, setUtilityShown] = useState(null)
@@ -28,7 +28,9 @@ const NavBar = (props) => {
         else setMenuItemShown(item)
     }
 
-    const linkToPush = `/results/${encodeURIComponent(props.query)}`
+    // const linkToPush = `/results/${encodeURIComponent(props.query)}`
+    // my edit
+    const linkToPush = props.query? `/results/${encodeURIComponent(props.query)}`:`/results/all`
     
     const enterQuery = () => {
         Router.push(linkToPush)
