@@ -29,7 +29,7 @@ const NavBar = (props) => {
     }
 
     // const linkToPush = `/results/${encodeURIComponent(props.query)}`
-    // my edit
+    // my edit.
     const linkToPush = props.query? `/results/${encodeURIComponent(props.query)}`:`/results/all`
     
     const enterQuery = () => {

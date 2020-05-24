@@ -76,6 +76,7 @@ const Register = (props) => {
                     </ul>
                 </InputHeader>
                 <input className={UR.UFInput} {...email.fields} id="SI-email" /> */}
+                {/* grammar */}
                 <InputHeader inputFor="SI-referenceLink" info={true} title="portfolio link" color="dark" >
                     <p style={{margin: 0, marginBottom: '5px'}}>link on your user page used as a resume to demonstrate your ability</p>
                     <p style={{margin: 0, marginBottom: '5px'}}><strong>always view another user's portfolio link before working with them</strong></p>
